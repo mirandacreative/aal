@@ -124,6 +124,7 @@ fabric.properties
 # modules.xml
 # .idea/misc.xml
 # *.ipr
+.idea/
 
 # Sonarlint plugin
 .idea/sonarlint
@@ -172,6 +173,7 @@ wp-content/uploads/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
 
+
 /.htaccess
 /license.txt
 /readme.html
@@ -188,3 +190,9 @@ wp-content/plugins/hello.php
 .gz
 .zip
 .7z
+*.sql.gz
+*.sql
+
+# wordmove
+movefile.yml
+
