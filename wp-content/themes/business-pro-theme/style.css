@@ -2917,7 +2917,7 @@ p.demo_store {
 
 /* ### Front Page 4 */
 .front-page-4 {
-	background-color: #232c39;
+	/*background-color: #232c39;*/
 	position: relative;
 	overflow: hidden;
 	color: #ffffff;
@@ -2935,7 +2935,7 @@ p.demo_store {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(35, 44, 57, 0.9);
+	/*background-color: rgba(35, 44, 57, 0.9);*/
 	z-index: 1;
 	pointer-events: none;
 }
