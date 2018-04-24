@@ -2,6 +2,8 @@
 
 # Created by https://www.gitignore.io/api/node,phpstorm,wordpress,sublimetext
 
+.DS_Store
+
 ### Node ###
 # Logs
 logs
@@ -186,16 +188,11 @@ wp-content/plugins/hello.php
 #Shell scripts Etc. #
 .sh
 .backup
-.sql
 .gz
 .zip
 .7z
-*.sql.gz
-*.sql
+.sql
+.sql.gz
 
 # wordmove
 movefile.yml
-
-# dbv database version control
-dbv/data/wp_users.sql
-dbv/data/wp_usermeta.sql
