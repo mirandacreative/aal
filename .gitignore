@@ -196,3 +196,6 @@ wp-content/plugins/hello.php
 # wordmove
 movefile.yml
 
+# dbv database version control
+dbv/data/wp_users.sql
+dbv/data/wp_usermeta.sql
