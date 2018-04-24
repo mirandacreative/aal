@@ -1,0 +1,13 @@
+/* Miranda Creative copyright @ April 23, 2018 - All rights reserved */
+/* Page Header */
+
+.page-header:before{
+    background: none;
+}
+#front-page-heading{
+    font-size: 2em;
+}
+header.site-header{
+    background-color: #232c39;
+    /*opacity: 0.6;*/
+}

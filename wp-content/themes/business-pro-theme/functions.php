@@ -249,3 +249,8 @@ include_once( get_stylesheet_directory() . '/includes/defaults.php' );
 
 // Load theme's recommended plugins.
 include_once( get_stylesheet_directory() . '/includes/plugins.php' );
+
+function mc_stylesheets(){
+	wp_enqueue_style('custom-css', get_stylesheet_directory_uri() . '/assets/css/custom.css');
+}
+add_action('wp_enqueue_scripts', 'mc_stylesheets', 100);
