@@ -4293,7 +4293,7 @@ p.demo_store {
 		width: 25%;
 	}
 }
-@media (max-width: 980px) {
+@media (max-width: 950px) {
 	.header-widget-area {
 	padding-top:33px;
 }
