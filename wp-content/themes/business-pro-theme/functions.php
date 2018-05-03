@@ -256,3 +256,17 @@ function mc_stylesheets(){
 	wp_enqueue_style('custom-css', get_stylesheet_directory_uri() . '/assets/css/custom.css');
 }
 add_action('wp_enqueue_scripts', 'mc_stylesheets', 100);
+
+// Do NOT include the opening php tag.
+// Remove site footer.
+remove_action( 'genesis_footer', 'genesis_footer_markup_open', 5 );
+remove_action( 'genesis_footer', 'genesis_do_footer' );
+remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
+// Customize site footer
+add_action( 'genesis_footer', 'sp_custom_footer' );
+function sp_custom_footer() { ?>
+
+	<div class="site-footer"><div class="wrap"><p>Powered By Miranda Creative</p></div></div>
+
+<?php
+}
