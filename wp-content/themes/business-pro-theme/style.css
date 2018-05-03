@@ -743,9 +743,6 @@ textarea:focus {
 	border-color: #647585;
 }
 
-:focus {
-	outline: 2px solid #f0f1f2;
-}
 
 input[type='checkbox'],
 input[type='image'],
@@ -4225,7 +4222,7 @@ p.demo_store {
 	.front-page-4,
 	.front-page-5,
 	.front-page-6 {
-		padding: 12rem 0;
+		padding: 3rem 0;
 	}
 	.front-page-4 {
 		padding: 20rem 0;
@@ -4295,7 +4292,7 @@ p.demo_store {
 }
 @media (max-width: 950px) {
 	.header-widget-area {
-	padding-top:33px;
+	padding-top:54px;
 }
 }
 @media (max-width: 896px) {
