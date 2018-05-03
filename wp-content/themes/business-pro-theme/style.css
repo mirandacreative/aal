@@ -76,7 +76,7 @@
 -----------------------------------------------------------------------*/
 /**
  * ### Breakpoints
- * 
+ *
  * Based on the most common 16:9 screen resolutions.
  * @link https://pacoup.com/2011/06/12/list-of-true-169-resolutions/
  */
@@ -4293,7 +4293,11 @@ p.demo_store {
 		width: 25%;
 	}
 }
-
+@media (max-width: 950px) {
+	.header-widget-area {
+	padding-top:33px;
+}
+}
 @media (max-width: 896px) {
 	.header-widget-area ul,
 	.header-widget-area ul.alignleft,
