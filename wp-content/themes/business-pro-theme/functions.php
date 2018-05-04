@@ -266,7 +266,7 @@ remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
 add_action( 'genesis_footer', 'sp_custom_footer' );
 function sp_custom_footer() { ?>
 
-	<div class="site-footer"><div class="wrap"><p>Powered By Miranda Creative</p></div></div>
+	<div class="site-footer"><div class="wrap"><p>Copyright 2018 &copy; - Action Airlines</p></div></div>
 
 <?php
 }
