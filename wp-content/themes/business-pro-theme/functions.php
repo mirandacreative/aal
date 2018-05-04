@@ -270,3 +270,8 @@ function sp_custom_footer() { ?>
 
 <?php
 }
+
+// add_action('genesis_before_footer','search);
+// function search(){
+//   get_template_part('includes/search-flights');
+// };
