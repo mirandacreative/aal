@@ -90,7 +90,7 @@ wp_enqueue_script( 'business-pro-theme', get_stylesheet_directory_uri() . '/asse
 // Enqueue map api scripts.
 wp_enqueue_script( 'google-maps-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp' );
 
-wp_enqueue_style( 'typehead', get_stylesheet_directory_uri() . '/assets/styles/typehead.css', array(), CHILD_THEME_VERSION );
+wp_enqueue_style( 'typehead', get_stylesheet_directory_uri() . '/assets/css/typehead.css', array(), CHILD_THEME_VERSION );
 
 // Enqueue typehead.js.
 wp_enqueue_script( 'type-head-bundle-js', get_stylesheet_directory_uri() . '/assets/scripts/typeahead.bundle.js' );
