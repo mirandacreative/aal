@@ -83,8 +83,26 @@ remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
 add_action('genesis_before_entry','joes_content');
 function joes_content(){
 	 get_template_part('templates/joes-include');
-
 }
+// Enqueue theme scripts.
+wp_enqueue_script( 'business-pro-theme', get_stylesheet_directory_uri() . '/assets/scripts/min/business-pro.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );\
+
+// Enqueue map api scripts.
+wp_enqueue_script( 'google-maps-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp' );
+
+wp_enqueue_style( 'typehead', get_stylesheet_directory_uri() . '/assets/styles/typehead.css', array(), CHILD_THEME_VERSION );
+
+// Enqueue typehead.js.
+wp_enqueue_script( 'type-head-bundle-js', get_stylesheet_directory_uri() . '/assets/scripts/typeahead.bundle.js' );
+
+// Enqueue available-airports-fees.js
+wp_enqueue_script( 'airport-fees-js', get_stylesheet_directory_uri() . '/assets/scripts/available-airports-fees.js' );
+
+
+// Enqueue miranda.js
+wp_enqueue_script( 'miranda-js', get_stylesheet_directory_uri() . '/assets/scripts/miranda.js' );
+
+
 
 // Run the Genesis loop.
 genesis();
