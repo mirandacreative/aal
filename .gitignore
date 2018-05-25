@@ -11,7 +11,8 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+.ftpconfig
+.gitignore
 # Runtime data
 pids
 *.pid
@@ -196,6 +197,6 @@ wp-content/plugins/hello.php
 .7z
 .sql
 .sql.gz
-
+.ftpconfig
 # wordmove
 movefile.yml

@@ -1,7 +1,7 @@
 var AIRPORTS_LIST = Object.keys(AIRPORTS_MAP);
 
-var blank_rfq = {"copilot":false, "notes":"", 
-"from":"", "faa_from":"", 
+var blank_rfq = {"copilot":false, "notes":"",
+"from":"", "faa_from":"",
 "to":"", "faa_to":"", "round_trip":false,};
 
 virgin = true;
@@ -12,8 +12,8 @@ var modal_lng = null;
 var modal_origin = "";
 
 
-$(document).ready(function() {
-    
+JQuery(document).ready(function() {
+
     $('#map-modal').on('shown.bs.modal', function() {
         $("#map-canvas").empty();
         initialize_map(modal_lat, modal_lng, modal_origin);
@@ -29,7 +29,7 @@ $(document).ready(function() {
         displayKey: 'value',
         source: substringMatcher(),
     });
-    
+
     $("#charter_leg").find(".aa_airport_loc_input").typeahead({
         hint: true,
         minLength: 3,
@@ -40,42 +40,42 @@ $(document).ready(function() {
         displayKey: 'value',
         source: substringMatcher(),
     });
-    
+
     apply_leg_callbacks();
-        
-    $("#search-go").button().click( function(event) {  
-        search_box_go(event);     
+
+    $("#search-go").button().click( function(event) {
+        search_box_go(event);
     });
-    
-    $("#search-back").button().click( function(event) { 
+
+    $("#search-back").button().click( function(event) {
         $("#map-modal").modal("hide");
     });
-    
-    
-    $("#search-origin").keydown( function(event) {  
-        if (event.keyCode == 13) {            
-            search_box_go(event);     
+
+
+    $("#search-origin").keydown( function(event) {
+        if (event.keyCode == 13) {
+            search_box_go(event);
         }
     });
-    
+
     $("#search-origin").click(function() {
         $(this).select();
     });
-    
+
 
 //     $("#next_button").button();
-//     
+//
 //     $("#next_button").button().click(function(event) {
 //         //event.preventDefault();
 //         generate_estimate();
 //     });
-    
+
 });
 
 var substringMatcher = function() {
     return function findMatches(q, cb) {
         var matches, substrRegex;
-        
+
         strs = AIRPORTS_LIST;
 
         // an array that will be populated with substring matches
@@ -84,11 +84,11 @@ var substringMatcher = function() {
         // regex used to determine if a string contains the substring `q`
         substrRegex = new RegExp(q, 'i');
         kregx = null;
-        
+
         if ((q[0] == 'k' || q[0] == 'K') && q.length == 4) {
-            kregx = new RegExp('^' + q.substring(1), 'i');    
+            kregx = new RegExp('^' + q.substring(1), 'i');
         }
-        
+
 
         // iterate through the pool of strings and for any string that
         // contains the substring `q`, add it to the `matches` array
@@ -142,7 +142,7 @@ function process_leg(leg_data) {
     if (to != "" && to in AIRPORTS_MAP) {
         to_ok = true;
     }
-        
+
     leg_result = { 'from_ok': from_ok, 'to_ok': to_ok, 'date_ok': date_ok };
 
     // if data ok, compute FT, ETA
@@ -153,7 +153,7 @@ function process_leg(leg_data) {
     return leg_result;
 };
 
-function compute_flight_time(from, to) { 
+function compute_flight_time(from, to) {
     from_airport = AIRPORTS_MAP[from];
     to_airport = AIRPORTS_MAP[to];
     from_lat = from_airport['lat'];
@@ -161,10 +161,10 @@ function compute_flight_time(from, to) {
     to_lat = to_airport['lat'];
     to_long = to_airport['lng'];
     distance = great_circle_distance(from_lat, from_long, to_lat, to_long);
-    
+
     airspeed = get_air_speed(distance);
     time = distance/airspeed;
-    return time;    
+    return time;
 }
 
 // function compute_eta(from, to, dep_datetime) {
@@ -187,16 +187,16 @@ function search_box_go(event) {
         geocoder.geocode( { 'address': origin_loc}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 $("#map-canvas").empty();
-                initialize_map(results[0].geometry.location.lat(), 
-                    results[0].geometry.location.lng(), 
+                initialize_map(results[0].geometry.location.lat(),
+                    results[0].geometry.location.lng(),
                     results[0].formatted_address);
-                
+
             } else {
                 alert("Google Maps could not locate " + origin_loc + " (" + status + ")");
             }
         });
-    }    
-    
+    }
+
 }
 
 function create_map(lat, lng, origin) {
@@ -204,7 +204,7 @@ function create_map(lat, lng, origin) {
     modal_lng = lng;
     modal_origin = origin;
     $("#map-modal").modal("show");
-//     initialize_map(modal_lat, modal_lng, modal_origin);    
+//     initialize_map(modal_lat, modal_lng, modal_origin);
 }
 
 
@@ -218,7 +218,7 @@ function get_airport_symbol(key_string) {
     return null;
 }
 
-function collect_leg_data(leg_elem) {    
+function collect_leg_data(leg_elem) {
     leg_data = {};
 //     leg_data['id'] = leg_elem.attr('id');
 //     locations = leg_elem.find(".aa_airport_loc_input");
@@ -242,16 +242,16 @@ function apply_leg_callbacks() {
         else {
             loc_input = trip_leg.find(".aa_airport_to_loc.tt-input");
         }
-        display_selection_map(loc_input[0]); 
+        display_selection_map(loc_input[0]);
 //         g_airport_loc_input = loc_input[0];
     });
-    
+
     $(".aa_airport_loc_input").blur( function(e, ui) {
         check_airport_loc_input($(this));
     });
-    
-    $(".aa_airport_loc_input").keydown( function(event) {  
-        if (event.keyCode == 13) {  
+
+    $(".aa_airport_loc_input").keydown( function(event) {
+        if (event.keyCode == 13) {
             value = this.value;
             if (value in AIRPORTS_MAP) {
                 $(this).blur();
@@ -261,16 +261,16 @@ function apply_leg_callbacks() {
             }
         }
     });
-    
+
     $(".aa_airport_loc_input").click(function() {
         $(this).select();
     });
-    
+
     $(".aa_copilot").change(function(event) {
         leg_div = $(".aa_trip_leg");
         try_to_set_eta(collect_leg_data(leg_div), leg_div);
     });
-    
+
     $(".aa_roundtrip").change(function() {
         leg_div = $(".aa_trip_leg");
         try_to_set_eta(collect_leg_data(leg_div), leg_div);
@@ -282,10 +282,10 @@ function apply_leg_callbacks() {
 
     leg_div.find(".aa_roundtrip").prop('checked', leg_data['roundtrip']);
     leg_div.find(".aa_copilot").prop('checked', leg_data['copilot']);
- 
+
     leg_div.find(".aa_airport_to_loc").val(leg_data['to']);
     leg_div.find(".aa_airport_from_loc").val(leg_data['from']);
-    
+
     try_to_set_eta(leg_data, leg_div);
 }
 
@@ -342,10 +342,10 @@ function check_airport_loc_input(loc_input_element) {
         location = leg_data['to'];
     }
     else return result;
-    
+
     airport_record = get_airport_record(location);
     if (airport_record != null) {
-        
+
         loc_input_element.removeClass("input_err");
         loc_input_element.addClass("input_ok");
         loc_input_element.val(airport_record['faa'] + ': ' + airport_record['name'])
@@ -362,11 +362,11 @@ function check_airport_loc_input(loc_input_element) {
 
 function set_cookie(leg_data) {
     json = JSON.stringify(leg_data, null, 4);
-    $.cookie("temp_rfq", json, {path:'/'});  
+    $.cookie("temp_rfq", json, {path:'/'});
 }
 
 function get_cookie_rfq() {
-    var temp_rfq = {} 
+    var temp_rfq = {}
     temp_rfq_json = $.cookie("temp_rfq");
     console.log("temp_rfq:", temp_rfq_json);
     if (temp_rfq_json == null || temp_rfq_json == "") {
@@ -375,13 +375,13 @@ function get_cookie_rfq() {
     }
     else {
         temp_rfq = JSON.parse(temp_rfq_json);
-    } 
+    }
     return temp_rfq;
 }
 
 function try_to_set_eta(leg_data, leg_div) {
     leg_result = process_leg(leg_data);
-    
+
     ft_elem = $($(leg_div).find(".aa_ft")[0]);
     ft_div = $($(leg_div).find(".aa_ft_div")[0]);
     estimate_elem = $($(leg_div).find(".aa_estimate")[0]);
@@ -400,13 +400,13 @@ function try_to_set_eta(leg_data, leg_div) {
         ft_div.removeClass('out');
         ft_div.addClass('in');
         ft_elem[0].innerText = ft_str;
-        
+
         // do the estimate_map
         estimate_elem.addClass('ui-state-highlight');
         estimate_div.removeClass('out');
         estimate_div.addClass('in');
         estimate_elem[0].innerText = generate_estimate(leg_data);
-        
+
         ed = $("#estimate-results");
         ed.effect("shake");
     }
@@ -414,14 +414,14 @@ function try_to_set_eta(leg_data, leg_div) {
         estimate_elem.removeClass('ui-state-highlight');
         estimate_div.removeClass('in');
         estimate_div.addClass('out');
-        estimate_elem[0].innerText = "";                
+        estimate_elem[0].innerText = "";
 
         ft_elem.removeClass('ui-state-highlight');
         ft_div.removeClass('in');
         ft_div.addClass('out');
-        ft_elem[0].innerText = "";                
+        ft_elem[0].innerText = "";
 
-    }   
+    }
     // every time an attempt is made to calculate
     // an estimate, save the cookie
     set_cookie(leg_data);
@@ -465,7 +465,7 @@ function initialize_map(lat, lng, origin_text) {
         lng = "-72.045139";
         origin_text = "GON:GROTON-NEW LONDON";
     }
-    
+
     center = new google.maps.LatLng(lat, lng);
     var mapOptions = {
         zoom: 9,
@@ -486,9 +486,9 @@ function initialize_map(lat, lng, origin_text) {
     originInfoWindow = new google.maps.InfoWindow({content:oiwtext});
     //originInfoWindow.open(map, originMarker);
     google.maps.event.addListener(originMarker, 'click', function() {
-        originInfoWindow.open(map, originMarker);        
+        originInfoWindow.open(map, originMarker);
     });
-    
+
     airport_keys = AIRPORTS_LIST; //find_airports_within_radius(lat, lng, 800);
     image = '/static/images/Airport-Blue-icon-xsmall.png';
     for (var i = 0; i < airport_keys.length; i++) {
@@ -502,13 +502,13 @@ function initialize_map(lat, lng, origin_text) {
             icon: image,
             title: marker_title,
         });
-        
+
         //console.log("map airport:", airport);
 
-        info_content = '<div id="content" class="airport_info">' + 
+        info_content = '<div id="content" class="airport_info">' +
         '<p class="marker_title">' + marker.getTitle() + '<br/>' + airport['city'] + ', ' + airport['state'] + '</p>' +
         '<p> <button class="airport_marker_select">Select Airport</button></div></p>';
-        
+
         infoWindow = new google.maps.InfoWindow({content:info_content});
         attach_info(marker, infoWindow);
     }
@@ -527,12 +527,12 @@ function attach_info(marker, infoWindow) {
             // ai = $(this).closest(".airport_info");
             // mt = ai.find(".marker_title");
             // mt0 = mt[0];
-            // selected = mt0.innerText; 
+            // selected = mt0.innerText;
             $(g_airport_loc_input).val(marker.title);
             $("#map-modal").modal("hide");
             check_airport_loc_input($(g_airport_loc_input));
         });
-    });    
+    });
 }
 
 
@@ -575,7 +575,7 @@ var operator = {
 function flat_rate_charge(from_code, to_code, op) {
     set_fares = op['set_fares'];
     for (sf in set_fares) {
-        if ( (from_code == sf['a'] && to_code == sf['b']) 
+        if ( (from_code == sf['a'] && to_code == sf['b'])
          || (from_code == sf['b'] && to_code == sf['a']) ) {
             return sf['fare'];
         }
@@ -584,9 +584,9 @@ function flat_rate_charge(from_code, to_code, op) {
 }
 
 function st_miles(to_airport, from_airport) {
-    return knots_to_miles * great_circle_distance(to_airport['lat'], 
-                                                to_airport['lng'], 
-                                                from_airport['lat'], 
+    return knots_to_miles * great_circle_distance(to_airport['lat'],
+                                                to_airport['lng'],
+                                                from_airport['lat'],
                                                 from_airport['lng']);
 }
 
@@ -598,7 +598,7 @@ function round_to_10(a) {
 }
 
 function compute_estimate(leg) {
-    
+
     mileage_rate = operator['mileage_rate'];
     copilot_fee = 0;
     if (leg["copilot"]) {
@@ -615,20 +615,20 @@ function compute_estimate(leg) {
     total_mileage_fees = 0.0;
     total_landing_fees = 0.0;
     total_copilot_fees = 0.0;
-    
+
     in_range = true;
-    
+
     line_items = [];
     result = {};
     result['line_items'] = line_items;
     home = AIRPORTS_MAP[operator['home_airport']];
     leg_mileage_fee = 0.0;
     leg_landing_fees = 0.0;
-    
+
     leg_items = {'cycles':[]};
-    
+
     // a 'cycle' is one take-off to landing
-    // a leg may consist of multiple cycles if the origin 
+    // a leg may consist of multiple cycles if the origin
     // is not the operator's "home" airport.
     // home to 'from' airport
     // 'from' to 'to' airport
@@ -642,9 +642,9 @@ function compute_estimate(leg) {
         total_smi += cycle_smi;
         cycle_mileage_fee = cycle_smi * mileage_rate;
         leg_mileage_fee += cycle_mileage_fee;
-        
+
     }
-    
+
     // now the origin -> destination
     cycle_smi = st_miles(AIRPORTS_MAP[leg['from']], AIRPORTS_MAP[leg['to']]);
     if (cycle_smi > max_range) {
@@ -657,7 +657,7 @@ function compute_estimate(leg) {
     to_ap = AIRPORTS_MAP[leg['to']];
     landing_fees = from_ap['fees'] + to_ap['fees'];
 
-    // now 'to' -> 'home' if necessary    
+    // now 'to' -> 'home' if necessary
     if (leg['to'] != home_airport) {
         // home to origin cycle
         cycle_smi = st_miles(home, AIRPORTS_MAP[leg['to']]);
@@ -667,22 +667,22 @@ function compute_estimate(leg) {
         total_smi += cycle_smi;
         cycle_mileage_fee = cycle_smi * mileage_rate;
         leg_mileage_fee += cycle_mileage_fee;
-        
+
     }
-    
+
     // check for minimum charge
     if (leg_mileage_fee < operator['min_air_mileage_charge']) {
         leg_mileage_fee = operator['min_air_mileage_charge'];
     }
-    
+
     flat_rate = flat_rate_charge(leg['from_faa'], leg['to_faa'], operator);
-    
+
     // check for flat rate
     if ( flat_rate > 0.0) {
         leg_mileage_fee = flat_rate;
         landing_fees = 0.0;
     }
-        
+
     low = round_to_10(leg_mileage_fee + landing_fees + copilot_fee);
     high = round_to_10((leg_mileage_fee * operator['estimation_factor']) + landing_fees + copilot_fee);
 
@@ -692,5 +692,5 @@ function compute_estimate(leg) {
     }
 
     return {"low": low, "high": high};
-    
+
 }
