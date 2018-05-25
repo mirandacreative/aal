@@ -198,5 +198,6 @@ wp-content/plugins/hello.php
 .sql
 .sql.gz
 .ftpconfig
+.sftpconfig
 # wordmove
 movefile.yml
