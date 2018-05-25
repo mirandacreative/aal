@@ -1,0 +1,136 @@
+/* css for the autocomplete (aka typeahead module) */
+.typeahead, .tt-query, .tt-hint {
+/*
+    border: 2px solid #CCCCCC;
+ */
+    border-radius: 4px;
+    font-size: 14px;
+    height: 24px;
+    line-height: 24px;
+    outline: medium none;
+    margin-top: 4px; margin-bottom: 4px;
+}
+.typeahead {
+    background-color: #FFFFFF;
+}
+.typeahead:focus {
+    border: 2px solid #0097CF;
+}
+.tt-query {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+    color: #999999;
+}
+.tt-dropdown-menu {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 4px;
+    padding: 2px 0;
+    width: 322px;
+}
+.tt-suggestion {
+    font-size: 14px;
+    line-height: 14px;
+    padding: 3px 20px;
+}
+.tt-cursor {
+    background-color: #0097CF!important;
+    color: #FFFFFF!important;
+}
+.tt-suggestion p {
+    margin: 0;
+}
+.aa_leg_inputs { margin: 0 auto;}
+    .location_input_span {
+        display: block;
+        overflow: hidden;
+        padding-right:14px;
+    }
+     .aa_copilot {} .aa_roundtrip {} .aa_flexible {}
+    .aa_comments { width: 250px; }
+    .aa_departure_time {}
+    .aa_remove_leg_button { float: right}
+    .aa_passengers {} .aa_eta {} .aa_ft {} .aa_estimate_div {} .aa_estimate {}
+    .overflow { height: 200px; }
+    .aa_interleg_div { } .aa_next_hop {}
+    .aa_multi_hop_element {}
+    .aa_ok_check { visibility: hidden; }
+    .location_div { max-width: 500px; overflow:hidden; }
+    .airport_marker_select {}
+    .airport_info { white-space: nowrap; overflow:hidden; }
+    .marker_title {}
+    .update_indicator{ float: right; }
+    .data_div { display:none;}
+    .aa_date_msg { font-style: italic; }
+    .map_button { border:none; background:none; width:"22px"; height: "22px";}
+    .from_map_button {}
+    .to_map_button {}
+    .aa_airport_loc_input {
+        width: 220px;
+     }
+    .aa_airport_from_loc {} .aa_airport_to_loc {}
+
+    .aa_trip_leg {  }
+    .leg_list_item { padding-right: 5px; }
+    .aa_departure_date {
+        padding: 0px;
+        width: 78px;
+        height: 24px;
+        border-radius: 4px;
+     }
+
+    .input_err { border:2px solid #b94a48; }
+    .input_ok { border:2px solid #28b62c; }
+    .rfq-comment-input { resize: both; }
+
+   .passenger-table { width: auto !important; }
+    table { width: auto !important; }
+    .aa_passenger_name {} .aa_passenger_weight{ max-width: 50px;}
+
+
+
+/*      .modal-md {height: auto;} */
+
+/*     .map-dialog { max-width: 750px; } */
+.aa-center-div {
+/*
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    width: 70%;
+ */
+    text-align: center;
+}
+.cc-radio {}
+</style>
+
+<style>
+/* payment stuff */
+.cc-text-input { max-width: 200px; display: inline;}
+.cc-short-text-input { max-width: 100px; display: inline;}
+.cc-select-input { max-width: 100px; display: inline;}
+.cc-label { min-width: 100px; text-align: right;}
+.cc-edit-item { max-width: 500px; }
+.input-err { border:2px solid #b94a48; }
+.input-ok { border:2px solid #28b62c; }
+.cc-edit-link {} .cc-del-card {}
+
+
+     #map-canvas {
+         height: 350px;
+         padding: 0px
+     }
+
+    @media screen and (min-height: 600px) {
+        #map-canvas {
+         height: 450px;
+         padding: 0px
+     }
+
+    @media screen and (min-height: 900px) {
+        #map-canvas {
+         height: 750px;
+         padding: 0px
+     }
