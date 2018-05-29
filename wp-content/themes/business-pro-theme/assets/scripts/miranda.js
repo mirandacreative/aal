@@ -11,15 +11,18 @@ var modal_lat = null;
 var modal_lng = null;
 var modal_origin = "";
 
+function initMap(){
+    //
+}
 
-JQuery(document).ready(function() {
+jQuery(document).ready(function() {
 
-    $('#map-modal').on('shown.bs.modal', function() {
-        $("#map-canvas").empty();
+    jQuery('#map-modal').on('shown.bs.modal', function() {
+        jQuery("#map-canvas").empty();
         initialize_map(modal_lat, modal_lng, modal_origin);
     });
 
-    $('#search-origin').typeahead({
+    jQuery('#search-origin').typeahead({
         hint: true,
         minLength: 3,
         highlight: true,
@@ -30,7 +33,7 @@ JQuery(document).ready(function() {
         source: substringMatcher(),
     });
 
-    $("#charter_leg").find(".aa_airport_loc_input").typeahead({
+    jQuery("#charter_leg").find(".aa_airport_loc_input").typeahead({
         hint: true,
         minLength: 3,
         highlight: true,
@@ -43,29 +46,29 @@ JQuery(document).ready(function() {
 
     apply_leg_callbacks();
 
-    $("#search-go").button().click( function(event) {
+    jQuery("#search-go").button().click( function(event) {
         search_box_go(event);
     });
 
-    $("#search-back").button().click( function(event) {
-        $("#map-modal").modal("hide");
+    jQuery("#search-back").button().click( function(event) {
+        jQuery("#map-modal").modal("hide");
     });
 
 
-    $("#search-origin").keydown( function(event) {
+    jQuery("#search-origin").keydown( function(event) {
         if (event.keyCode == 13) {
             search_box_go(event);
         }
     });
 
-    $("#search-origin").click(function() {
-        $(this).select();
+    jQuery("#search-origin").click(function() {
+        jQuery(this).select();
     });
 
 
-//     $("#next_button").button();
+//     jQuery("#next_button").button();
 //
-//     $("#next_button").button().click(function(event) {
+//     jQuery("#next_button").button().click(function(event) {
 //         //event.preventDefault();
 //         generate_estimate();
 //     });
@@ -92,7 +95,7 @@ var substringMatcher = function() {
 
         // iterate through the pool of strings and for any string that
         // contains the substring `q`, add it to the `matches` array
-        $.each(strs, function(i, str) {
+        jQuery.each(strs, function(i, str) {
             if (substrRegex.test(str)) {
                 // the typeahead jQuery plugin expects suggestions to a
                 // JavaScript object, refer to typeahead docs for more info
@@ -175,10 +178,10 @@ function compute_flight_time(from, to) {
 // }
 
 function search_box_go(event) {
-    origin_loc = $("#search-origin").val();
+    origin_loc = jQuery("#search-origin").val();
     if (origin_loc in AIRPORTS_MAP) {
         origin_rec = AIRPORTS_MAP[origin_loc];
-        $("#map-canvas").empty();
+        jQuery("#map-canvas").empty();
         initialize_map(origin_rec['lat'], origin_rec['lng'], origin_loc);
     }
     else {
@@ -186,7 +189,7 @@ function search_box_go(event) {
         geocoder = new google.maps.Geocoder();
         geocoder.geocode( { 'address': origin_loc}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-                $("#map-canvas").empty();
+                jQuery("#map-canvas").empty();
                 initialize_map(results[0].geometry.location.lat(),
                     results[0].geometry.location.lng(),
                     results[0].formatted_address);
@@ -203,7 +206,7 @@ function create_map(lat, lng, origin) {
     modal_lat = lat;
     modal_lng = lng;
     modal_origin = origin;
-    $("#map-modal").modal("show");
+    jQuery("#map-modal").modal("show");
 //     initialize_map(modal_lat, modal_lng, modal_origin);
 }
 
@@ -234,9 +237,9 @@ function collect_leg_data(leg_elem) {
 
 function apply_leg_callbacks() {
 
-    $(".map_button").click( function(event) {
-        trip_leg = $(this).closest(".aa_trip_leg");
-        if ($(this).hasClass("from_map_button")) {
+    jQuery(".map_button").click( function(event) {
+        trip_leg = jQuery(this).closest(".aa_trip_leg");
+        if (jQuery(this).hasClass("from_map_button")) {
             loc_input = trip_leg.find(".aa_airport_from_loc.tt-input");
         }
         else {
@@ -246,15 +249,15 @@ function apply_leg_callbacks() {
 //         g_airport_loc_input = loc_input[0];
     });
 
-    $(".aa_airport_loc_input").blur( function(e, ui) {
-        check_airport_loc_input($(this));
+    jQuery(".aa_airport_loc_input").blur( function(e, ui) {
+        check_airport_loc_input(jQuery(this));
     });
 
-    $(".aa_airport_loc_input").keydown( function(event) {
+    jQuery(".aa_airport_loc_input").keydown( function(event) {
         if (event.keyCode == 13) {
             value = this.value;
             if (value in AIRPORTS_MAP) {
-                $(this).blur();
+                jQuery(this).blur();
             }
             else {
                 display_selection_map(this);
@@ -262,23 +265,23 @@ function apply_leg_callbacks() {
         }
     });
 
-    $(".aa_airport_loc_input").click(function() {
-        $(this).select();
+    jQuery(".aa_airport_loc_input").click(function() {
+        jQuery(this).select();
     });
 
-    $(".aa_copilot").change(function(event) {
-        leg_div = $(".aa_trip_leg");
+    jQuery(".aa_copilot").change(function(event) {
+        leg_div = jQuery(".aa_trip_leg");
         try_to_set_eta(collect_leg_data(leg_div), leg_div);
     });
 
-    $(".aa_roundtrip").change(function() {
-        leg_div = $(".aa_trip_leg");
+    jQuery(".aa_roundtrip").change(function() {
+        leg_div = jQuery(".aa_trip_leg");
         try_to_set_eta(collect_leg_data(leg_div), leg_div);
     });
 
     // retrieve the cookie, if there is one, and set the data
     leg_data = get_cookie_rfq();
-    leg_div = $(".aa_trip_leg");
+    leg_div = jQuery(".aa_trip_leg");
 
     leg_div.find(".aa_roundtrip").prop('checked', leg_data['roundtrip']);
     leg_div.find(".aa_copilot").prop('checked', leg_data['copilot']);
@@ -318,10 +321,10 @@ function get_airport_record(loc_name) {
 }
 
 function check_all_inputs() {
-    leg_divs = $(".aa_trip_leg");
+    leg_divs = jQuery(".aa_trip_leg");
     ok = true;
     for (i=0; i<leg_divs.length; i++) {
-        leg_div = $(leg_divs[i]);
+        leg_div = jQuery(leg_divs[i]);
         from_location = leg_div.find(".aa_airport_from_loc");
         to_location = leg_div.find(".aa_airport_to_loc");
         ok = check_airport_loc_input(from_location) && ok;
@@ -362,16 +365,16 @@ function check_airport_loc_input(loc_input_element) {
 
 function set_cookie(leg_data) {
     json = JSON.stringify(leg_data, null, 4);
-    $.cookie("temp_rfq", json, {path:'/'});
+    jQuery.cookie("temp_rfq", json, {path:'/'});
 }
 
 function get_cookie_rfq() {
     var temp_rfq = {}
-    temp_rfq_json = $.cookie("temp_rfq");
+    temp_rfq_json = jQuery.cookie("temp_rfq");
     console.log("temp_rfq:", temp_rfq_json);
     if (temp_rfq_json == null || temp_rfq_json == "") {
         temp_rfq = blank_rfq;
-        $.cookie("temp_rfq", JSON.stringify(temp_rfq, null, 4), {path:'/'} );
+        jQuery.cookie("temp_rfq", JSON.stringify(temp_rfq, null, 4), {path:'/'} );
     }
     else {
         temp_rfq = JSON.parse(temp_rfq_json);
@@ -382,10 +385,10 @@ function get_cookie_rfq() {
 function try_to_set_eta(leg_data, leg_div) {
     leg_result = process_leg(leg_data);
 
-    ft_elem = $($(leg_div).find(".aa_ft")[0]);
-    ft_div = $($(leg_div).find(".aa_ft_div")[0]);
-    estimate_elem = $($(leg_div).find(".aa_estimate")[0]);
-    estimate_div = $($(leg_div).find(".aa_estimate_div")[0]);
+    ft_elem = jQuery(jQuery(leg_div).find(".aa_ft")[0]);
+    ft_div = jQuery(jQuery(leg_div).find(".aa_ft_div")[0]);
+    estimate_elem = jQuery(jQuery(leg_div).find(".aa_estimate")[0]);
+    estimate_div = jQuery(jQuery(leg_div).find(".aa_estimate_div")[0]);
     if ('ft_out' in leg_result) {
         ft = leg_result['ft_out'];
         ipart = Math.floor(ft);
@@ -407,7 +410,7 @@ function try_to_set_eta(leg_data, leg_div) {
         estimate_div.addClass('in');
         estimate_elem[0].innerText = generate_estimate(leg_data);
 
-        ed = $("#estimate-results");
+        ed = jQuery("#estimate-results");
         ed.effect("shake");
     }
     else {
@@ -431,7 +434,7 @@ function display_selection_map(location_input_elem) {
     g_airport_loc_input = location_input_elem;
 
     loc_input = location_input_elem.value;
-    $("#search-origin")[0].value = loc_input;
+    jQuery("#search-origin")[0].value = loc_input;
     lat = "";
     lng = "";
     if (loc_input == "") {
@@ -522,15 +525,15 @@ var g_airport_loc_input = null;
 function attach_info(marker, infoWindow) {
     google.maps.event.addListener(marker, 'click', function() {
         infoWindow.open(marker.get('map'), marker);
-        buttons = $(".airport_marker_select");
+        buttons = jQuery(".airport_marker_select");
         buttons.button().click( function(event) {
-            // ai = $(this).closest(".airport_info");
+            // ai = jQuery(this).closest(".airport_info");
             // mt = ai.find(".marker_title");
             // mt0 = mt[0];
             // selected = mt0.innerText;
-            $(g_airport_loc_input).val(marker.title);
-            $("#map-modal").modal("hide");
-            check_airport_loc_input($(g_airport_loc_input));
+            jQuery(g_airport_loc_input).val(marker.title);
+            jQuery("#map-modal").modal("hide");
+            check_airport_loc_input(jQuery(g_airport_loc_input));
         });
     });
 }
@@ -538,7 +541,7 @@ function attach_info(marker, infoWindow) {
 
 // generate estimate
 function generate_estimate() {
-    leg_elem = $(".aa_trip_leg");
+    leg_elem = jQuery(".aa_trip_leg");
 
     estimate_map = compute_estimate(collect_leg_data(leg_elem));
     s = '$' +  Math.floor(estimate_map['low']).toString() + ' to: $' + Math.floor(estimate_map['high']).toString();
