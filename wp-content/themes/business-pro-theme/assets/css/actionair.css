@@ -1,0 +1,16 @@
+#map-canvas {
+     height: 350px;
+     padding: 0px
+ }
+
+@media screen and (min-height: 600px) {
+    #map-canvas {
+     height: 450px;
+     padding: 0px
+ }
+
+@media screen and (min-height: 900px) {
+    #map-canvas {
+     height: 750px;
+     padding: 0px
+ } 

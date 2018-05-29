@@ -84,20 +84,22 @@ add_action('genesis_before_entry','joes_content');
 function joes_content(){
 	 get_template_part('templates/joes-include');
 }
-
-wp_enqueue_style( 'bootstrapin', get_stylesheet_directory_uri() . '/assets/css/bootstrap.css' );
-wp_enqueue_style( 'bootthemin', get_stylesheet_directory_uri() . '/assets/css/bootstrap-theme.css' );
+//    <link rel="stylesheet" href="/static/bootstrap-3.3.4-dist/css/bootstrap.css">
+    // <link rel="stylesheet" href="/static/bootstrap-3.3.4-dist/css/bootstrap-theme.css">
+wp_enqueue_style( 'bootstrapin', '/static/bootstrap-3.3.4/dist/css/bootstrap.css' );
+wp_enqueue_style( 'bootthemin', '/static/bootstrap-3.3.4/dist/css/bootstrap-theme.css' );
+wp_enqueue_style(  'actionstyles', get_stylesheet_directory_uri() . '/assets/css/actionair.css' );
 
 
 // // Enqueue theme scripts.
 wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
 // // Enqueue miranda.js
-wp_enqueue_script( 'bootstrap', get_stylesheet_directory_uri() . '/assets/scripts/bootstrap.js' );
+wp_enqueue_script( 'bootstrap', '/static/bootstrap-3.3.4/dist/js/bootstrap.js' );
 wp_enqueue_script( 'bootstrap-cookie', get_stylesheet_directory_uri() . '/assets/scripts/jquery.cookie.js' );
 wp_enqueue_script( 'jqui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js' );
 wp_enqueue_script( 'greatcirc', get_stylesheet_directory_uri() . '/assets/scripts/great_circle.js' );
 // // Enqueue map api scripts.
-wp_enqueue_script( 'google-maps-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp' );
+
 
 wp_enqueue_style( 'typehead', get_stylesheet_directory_uri() . '/assets/css/typehead.css');
 // // Enqueue typehead.js.
@@ -111,6 +113,6 @@ wp_enqueue_script( 'airport-fees-js', get_stylesheet_directory_uri() . '/assets/
 wp_enqueue_script( 'miranda-js', get_stylesheet_directory_uri() . '/assets/scripts/miranda.js' );
 
 
-
+wp_enqueue_script( 'googlemapsapi', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBCzyxbiDIthWXfxdk88zrlvqEHPOrxgkU&callback=initMap' );
 // Run the Genesis loop.
 genesis();
