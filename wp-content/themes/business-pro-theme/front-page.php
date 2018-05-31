@@ -17,7 +17,34 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 
 }
+wp_enqueue_style( 'bootstrapin', '/static/bootstrap-3.3.4/dist/css/bootstrap.css' );
+wp_enqueue_style( 'bootthemin', '/static/bootstrap-3.3.4/dist/css/bootstrap-theme.css' );
+wp_enqueue_style(  'actionstyles', get_stylesheet_directory_uri() . '/assets/css/actionair.css' );
 
+
+// // Enqueue theme scripts.
+wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
+// // Enqueue miranda.js
+wp_enqueue_script( 'bootstrap', '/static/bootstrap-3.3.4/dist/js/bootstrap.js' );
+wp_enqueue_script( 'bootstrap-cookie', get_stylesheet_directory_uri() . '/assets/scripts/jquery.cookie.js' );
+wp_enqueue_script( 'jqui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js' );
+wp_enqueue_script( 'greatcirc', get_stylesheet_directory_uri() . '/assets/scripts/great_circle.js' );
+// // Enqueue map api scripts.
+
+
+wp_enqueue_style( 'typehead', get_stylesheet_directory_uri() . '/assets/css/typehead.css');
+// // Enqueue typehead.js.
+wp_enqueue_script( 'type-head-bundle-js', get_stylesheet_directory_uri() . '/assets/scripts/typeahead.bundle.js' );
+//
+// // Enqueue available-airports-fees.js
+wp_enqueue_script( 'airport-fees-js', get_stylesheet_directory_uri() . '/assets/scripts/available-airports-fees.js' );
+//
+//
+// // Enqueue miranda.js
+wp_enqueue_script( 'miranda-js', get_stylesheet_directory_uri() . '/assets/scripts/miranda.js' );
+
+
+wp_enqueue_script( 'googlemapsapi', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBCzyxbiDIthWXfxdk88zrlvqEHPOrxgkU&callback=initMap' );
 // Check if any front page widgets are active.
 if ( is_active_sidebar( 'front-page-1' ) ||
 	is_active_sidebar( 'front-page-2' ) ||
@@ -61,8 +88,8 @@ if ( is_active_sidebar( 'front-page-1' ) ||
 
 		// Front page 2 widget area.
 		genesis_widget_area( 'front-page-2', array(
-			'before' => '<div class="front-page-2 widget-area"><div class="wrap">',
-			'after'  => '</div></div>',
+			'before' => '<div class="front-page-2 widget-area">',
+			'after'  => '</div>',
 		) );
 
 		// Front page 3 widget area.

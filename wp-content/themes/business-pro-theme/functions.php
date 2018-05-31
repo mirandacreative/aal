@@ -275,3 +275,8 @@ function sp_custom_footer() { ?>
 // function search(){
 //   get_template_part('includes/search-flights');
 // };
+//price estimator form shortcode
+function price_estimator_form( $attr ) {
+    get_template_part('templates/joes-include');
+}
+add_shortcode( 'estimator', 'price_estimator_form' );
