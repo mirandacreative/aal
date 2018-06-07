@@ -54,7 +54,7 @@
                         <div class="collapse out aa_estimate_div"><span>Estimate: <label class="aa_estimate" ></label></span></div>
                     </div>
                     <br/>
-                    <button id='next_button' class="btn btn-success btn-block">Get a Firm Quote</button>
+                    <a href="http://aal.staging.mirandacreative.com/firm-quote/"><button id='next_button' class="btn btn-success btn-block">Get a Firm Quote</button></a>
 
                 </div>
             </div>

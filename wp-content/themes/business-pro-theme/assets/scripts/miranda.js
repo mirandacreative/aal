@@ -408,7 +408,11 @@ function try_to_set_eta(leg_data, leg_div) {
         estimate_elem.addClass('ui-state-highlight');
         estimate_div.removeClass('out');
         estimate_div.addClass('in');
-        estimate_elem[0].innerText = generate_estimate(leg_data);
+        estimate_map = generate_estimate(leg_data);
+        console.log('estimate_map ' + estimate_map);
+        leg_data['estimate'] = estimate_map;
+        leg_data['flight_time'] = ft_str;
+        estimate_elem[0].innerText = '$' +  Math.floor(estimate_map['low']).toString() + ' to: $' + Math.floor(estimate_map['high']).toString();
 
         ed = jQuery("#estimate-results");
         ed.effect("shake");
@@ -544,8 +548,7 @@ function generate_estimate() {
     leg_elem = jQuery(".aa_trip_leg");
 
     estimate_map = compute_estimate(collect_leg_data(leg_elem));
-    s = '$' +  Math.floor(estimate_map['low']).toString() + ' to: $' + Math.floor(estimate_map['high']).toString();
-    return s;
+    return estimate_map;
 }
 
 var operator = {
