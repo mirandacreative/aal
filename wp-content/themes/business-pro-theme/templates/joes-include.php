@@ -1,18 +1,4 @@
 
-                  <div id="firm-quote" class="modal">
-                      <div class="modal-dialog map-dialog modal-lg" data-backdrop="false" id='firmquote'>
-                          <div class="modal-content" >
-                              <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                  <h4 class="modal-title">Get a firm Quote</h4>
-                              </div>
-                              <div class="modal-body">
-                                <?php gravity_form('Firm Quote', false, false, false, '', false); ?>
-                              </div> <!-- end body -->
-                          </div>
-                      </div>
-                  </div>
-
                   <!-- map div -->
                   <div id="map-modal" class="modal">
                       <div class="modal-dialog map-dialog modal-lg" data-backdrop="false" id='selection_map'>
@@ -62,7 +48,7 @@
           </div>
           <div class="col-sm-3">
             <!-- make this button only active when the cookie has data or forms are filled -->
-            <button type="button" class="firmquote" data-toggle="modal" data-target="#firm-quote">Get Firm Quote</button>
+            <a href="http://aal.staging.mirandacreative.com/firm-quote/"><button type="button" class="firmquote">Get Firm Quote</button></a>
           </div>
         </div>
     </div>

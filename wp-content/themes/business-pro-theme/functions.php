@@ -15,7 +15,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 
 }
-
 // Child theme (do not remove).
 include_once( get_template_directory() . '/lib/init.php' );
 
@@ -280,3 +279,21 @@ function price_estimator_form( $attr ) {
     get_template_part('templates/joes-include');
 }
 add_shortcode( 'estimator', 'price_estimator_form' );
+
+
+
+
+add_filter('gform_field_value_fromdata', 'fromjson');
+function fromjson($value){
+	$cookdata = $_COOKIE['temp_rfq'];
+	$someJSON = '['.stripslashes($cookdata).']';
+	$cookiearray = json_decode($someJSON, true);
+	  return $cookiearray[0]["from"];
+}
+add_filter('gform_field_value_todata', 'tojson');
+function tojson($value){
+	$cookdata = $_COOKIE['temp_rfq'];
+	$someJSON = '['.stripslashes($cookdata).']';
+	$cookiearray = json_decode($someJSON, true);
+	  return $cookiearray[0]["to"];
+}

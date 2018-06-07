@@ -79,11 +79,6 @@
 // remove_action( 'genesis_footer', 'genesis_do_footer' );
 // remove_action( 'genesis_footer', 'business_footer_menu', 7 );
 // remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
-
-add_action('genesis_before_entry','joes_content');
-function joes_content(){
-	 get_template_part('templates/firmquote');
-}
 //    <link rel="stylesheet" href="/static/bootstrap-3.3.4-dist/css/bootstrap.css">
     // <link rel="stylesheet" href="/static/bootstrap-3.3.4-dist/css/bootstrap-theme.css">
 wp_enqueue_style( 'bootstrapin', '/static/bootstrap-3.3.4/dist/css/bootstrap.css' );
