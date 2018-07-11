@@ -114,7 +114,5 @@ wp_enqueue_script( 'miranda-js', get_stylesheet_directory_uri() . '/assets/scrip
 
 
 wp_enqueue_script( 'googlemapsapi', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBCzyxbiDIthWXfxdk88zrlvqEHPOrxgkU&callback=initMap' );
-
-
 // Run the Genesis loop.
 genesis();

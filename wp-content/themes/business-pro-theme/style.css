@@ -100,6 +100,15 @@
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
+
+/* MCcoder */
+div.front-page-2 {
+    background-size: cover;
+}
+.aa_trip_leg {
+    background-size: cover;
+}
+
 html {
 	line-height: 1.15;
 	/* 1 */
@@ -864,7 +873,7 @@ object,
 video,
 .wp-caption,
 .wp-video-shortcode {
-	max-width: 100%;
+	max-width: 85%;
 	display: block;
 }
 
@@ -1036,6 +1045,7 @@ th {
 	width: 100%;
 	display: block;
 	border-radius: 4px;
+  max-height: 222px;
 }
 
 .gallery-caption {
@@ -2168,6 +2178,8 @@ p.entry-meta {
 	font-size: 1.6rem;
 	max-width: -webkit-calc(100% - 4rem);
 	max-width:         calc(100% - 4rem);
+  color: white!important;
+    padding-top: 28px;
 }
 
 .site-footer a {
@@ -3971,7 +3983,7 @@ p.demo_store {
 	}
 	.front-page-2 p {
 		padding: 0 1em;
-		font-size: 1.8rem;
+		font-size: 1.9rem;
 	}
 	.front-page-2 p:last-of-type {
 		margin-bottom: 0;
@@ -4060,7 +4072,7 @@ p.demo_store {
 		padding: 0;
 	}
 	.site-header > .wrap {
-		padding: 1rem 0;
+		padding: 2px 0;
 		-webkit-flex-wrap: nowrap;
 		    -ms-flex-wrap: nowrap;
 		        flex-wrap: nowrap;
@@ -4098,7 +4110,7 @@ p.demo_store {
 		width: auto;
 		display: inline-block;
 		margin-left: 0.5em;
-		border: 3px solid transparent;
+		border: 9px solid transparent;
 		border-top-color: #f6f7f8;
 	}
 	.menu-item.button > a > span {
@@ -4216,7 +4228,7 @@ p.demo_store {
 		margin-bottom: 0;
 	}
 	.footer-widgets {
-		padding: 10rem 0;
+		padding: 5rem 0;
 	}
 	.front-page-1,
 	.front-page-2,
@@ -4269,7 +4281,7 @@ p.demo_store {
 		padding: 0;
 	}
 	.menu-item a {
-		padding: 2em 1.25em;
+		padding: 1em 1.25em;
 	}
 	.sub-menu a {
 		padding: 1em;
@@ -4462,3 +4474,9 @@ p.demo_store {
 		page-break-before: avoid;
 	}
 }
+@media (max-width: 980px) {
+		   #custom_html-1 h1 {
+
+		    font-size: 2em!important;
+		}
+ }

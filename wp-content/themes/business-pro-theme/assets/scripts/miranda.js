@@ -240,12 +240,12 @@ function apply_leg_callbacks() {
     jQuery(".map_button").click( function(event) {
         trip_leg = jQuery(this).closest(".aa_trip_leg");
         if (jQuery(this).hasClass("from_map_button")) {
-            loc_input = trip_leg.find(".aa_airport_from_loc.tt-input");
+            loc_input = trip_leg.find(".aa_airport_from_loc.tt-input")[0];
         }
         else {
-            loc_input = trip_leg.find(".aa_airport_to_loc.tt-input");
+            loc_input = trip_leg.find(".aa_airport_to_loc.tt-input")[0];
         }
-        display_selection_map(loc_input[0]);
+        display_selection_map(loc_input);
 //         g_airport_loc_input = loc_input[0];
     });
 
@@ -351,7 +351,7 @@ function check_airport_loc_input(loc_input_element) {
 
         loc_input_element.removeClass("input_err");
         loc_input_element.addClass("input_ok");
-        loc_input_element.val(airport_record['faa'] + ': ' + airport_record['name'])
+        loc_input_element.typeahead('val', (airport_record['faa'] + ': ' + airport_record['name']));
         leg_data = collect_leg_data(leg_div);
         result = true;
     }
@@ -437,7 +437,9 @@ function try_to_set_eta(leg_data, leg_div) {
 function display_selection_map(location_input_elem) {
     g_airport_loc_input = location_input_elem;
 
+//     loc_input = jQuery(location_input_elem).typeahead('val');
     loc_input = location_input_elem.value;
+
     jQuery("#search-origin")[0].value = loc_input;
     lat = "";
     lng = "";
@@ -535,9 +537,9 @@ function attach_info(marker, infoWindow) {
             // mt = ai.find(".marker_title");
             // mt0 = mt[0];
             // selected = mt0.innerText;
-            jQuery(g_airport_loc_input).val(marker.title);
-            jQuery("#map-modal").modal("hide");
+            jQuery(g_airport_loc_input).typeahead('val', marker.title);
             check_airport_loc_input(jQuery(g_airport_loc_input));
+            jQuery("#map-modal").modal("hide");
         });
     });
 }

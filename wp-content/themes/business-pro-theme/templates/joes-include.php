@@ -48,7 +48,7 @@
           </div>
           <div class="col-sm-3">
             <!-- make this button only active when the cookie has data or forms are filled -->
-            <a href="http://aal.staging.mirandacreative.com/firm-quote/"><button type="button" class="firmquote">Get Firm Quote</button></a>
+            <a href="<?php echo site_url(); ?>/firm-quote/"><button type="button" class="firmquote">Get Firm Quote</button></a>
           </div>
         </div>
     </div>
